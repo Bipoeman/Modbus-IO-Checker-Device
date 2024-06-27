@@ -226,7 +226,6 @@ void loop() {
       Serial.println(btCommand);
       String command = btCommand.substring(0, btCommand.indexOf('='));
       String params = btCommand.substring(btCommand.indexOf('=') + 1);
-      resetDisplayTimeout();
       if (command.equals("address")) {
         int newID = params.toInt();
         if (params.equals("?")) {
@@ -283,6 +282,7 @@ void loop() {
           Serial.println(deviceMode == MODE_MASTER ? "MASTER" : "SLAVE");
         }
       }
+      resetDisplayTimeout();
       btCommand = "";
     }
   }
@@ -374,13 +374,14 @@ void resetDisplayTimeout() {
   lcd.setCursor(0, 0);
   lcd.print("            ");
   lcd.setCursor(6, 1);
-  lcd.print("   ");
+  lcd.print("    ");
+  lcd.setCursor(0, 0);
   lcd.print(deviceName);
   String addressString = "Addr : ";
   lcd.setCursor(0, 1);
   lcd.print(addressString);
   lcd.print(slaveAddress);
-  Serial.println("Update display timeout");
+  // Serial.println("Update display timeout");
   displayOnTimeOut = millis();
 }
 
