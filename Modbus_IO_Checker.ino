@@ -373,7 +373,8 @@ void resetDisplayTimeout() {
   // lcd.setCursor((16 - (deviceName.length())) / 2, 0);
   lcd.setCursor(0, 0);
   lcd.print("            ");
-  lcd.setCursor(0, 0);
+  lcd.setCursor(6, 1);
+  lcd.print("   ");
   lcd.print(deviceName);
   String addressString = "Addr : ";
   lcd.setCursor(0, 1);
